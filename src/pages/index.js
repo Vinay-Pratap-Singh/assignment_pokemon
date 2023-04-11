@@ -1,40 +1,21 @@
+import Loader from "@/components/Loader";
 import PokemonCard from "@/components/PokemonCard";
-import { gql, useQuery } from "@apollo/client";
+import { GET_POKEMONS } from "@/graphql/Query";
+import { useQuery } from "@apollo/client";
 import React from "react";
 
 const index = () => {
-  const GET_POKEMONS = gql`
-    query pokemons($first: Int!) {
-      pokemons(first: $first) {
-        id
-        number
-        name
-        weight {
-          minimum
-          maximum
-        }
-        height {
-          minimum
-          maximum
-        }
-        classification
-        types
-        resistant
-        weaknesses
-        fleeRate
-        maxCP
-        maxHP
-        image
-      }
-    }
-  `;
-
   const { loading, error, data } = useQuery(GET_POKEMONS, {
     variables: { first: 20 },
   });
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading) return <Loader />;
+  if (error)
+    return (
+      <div className="w-screen h-screen flex items-center justify-center">
+        <p className="text-lg font-medium">:( Oops! Something went wrong...</p>
+      </div>
+    );
 
   return (
     <div className="flex items-center justify-center flex-wrap gap-10 m-10 ">
