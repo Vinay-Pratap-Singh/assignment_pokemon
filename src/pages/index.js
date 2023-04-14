@@ -6,7 +6,7 @@ import React from "react";
 
 const index = () => {
   const { loading, error, data } = useQuery(GET_POKEMONS, {
-    variables: { first: 20 },
+    variables: { first: 2 },
   });
 
   if (loading) return <Loader />;
