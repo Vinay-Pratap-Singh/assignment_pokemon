@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
 
 const PokemonCard = ({ pokemon }) => {
-  const router = useRouter();
   return (
     <Link
       href={{
@@ -11,9 +9,9 @@ const PokemonCard = ({ pokemon }) => {
         query: { id: pokemon?.id, name: pokemon?.name },
       }}
     >
-      <div className="w-60 shadow-md p-3 rounded-md space-y-2 cursor-pointer hover:scale-[1.015] transition-all duration-300 ease-in-out">
+      <div className="w-52 shadow-md p-3 rounded-md space-y-2 cursor-pointer relative hover:-translate-y-1 transition-all duration-300 ease-in-out">
         <img
-          className="w-fit h-40 m-auto"
+          className="w-fit h-28 m-auto"
           src={pokemon?.image}
           alt="pokemon image"
         />
