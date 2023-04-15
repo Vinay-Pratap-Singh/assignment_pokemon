@@ -70,26 +70,31 @@ const index = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-10 m-10 ">
+    <div className="flex flex-col items-center justify-center gap-10 p-10 bg-gray-100">
       <div className="flex items-center justify-center flex-wrap gap-10">
         {displayPokemon.map((pokemon) => {
           return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
         })}
       </div>
       {/* adding the button for pagination */}
-      <div>
-        <button
-          onClick={() => handlePrevBtnClick()}
-          className="bg-cyan-500 w-24 py-2 font-semibold text-white rounded-md hover:bg-cyan-400 transition-all duration-200 ease-in-out"
-        >
-          Previous
-        </button>
-        <button
-          onClick={() => handleNextBtnClick()}
-          className="bg-cyan-500 w-24 py-2 font-semibold text-white rounded-md hover:bg-cyan-400 transition-all duration-200 ease-in-out"
-        >
-          Next
-        </button>
+      <div className="flex items-center justify-center gap-20 px-5 py-2 shadow-md rounded-md">
+        <p className="font-semibold">
+          {startIndex + 1} to {startIndex + endIndex} of {orgData.length}
+        </p>
+        <div className="flex items-center justify-center gap-5">
+          <button
+            onClick={() => handlePrevBtnClick()}
+            className="bg-cyan-500 w-24 py-2 font-semibold text-white rounded-md hover:bg-cyan-400 transition-all duration-300 ease-in-out"
+          >
+            Previous
+          </button>
+          <button
+            onClick={() => handleNextBtnClick()}
+            className="bg-cyan-500 w-24 py-2 font-semibold text-white rounded-md hover:bg-cyan-400 transition-all duration-300 ease-in-out"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
